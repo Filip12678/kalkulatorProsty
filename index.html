@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Kalkulator prosty</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            
+            function calc()
+            {
+                var n1 = parseFloat(document.getElementById('n1').value);
+                var n2 = parseFloat(document.getElementById('n2').value);
+                
+                var oper = document.getElementById('operators').value;
+                
+                if(oper === '+')
+                {
+                    document.getElementById('result').value = n1+n2;
+                }
+                
+                if(oper === '-')
+                {
+                    document.getElementById('result').value = n1-n2;
+                }
+                
+                if(oper === '/')
+                {
+				    var wynik = n1/n2;
+					wynik = Math.round(wynik * 1000000000000000) / 1000000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+                
+                if(oper === 'X')
+                {
+                    document.getElementById('result').value = n1*n2;
+                }
+				if(oper === '%')
+                {
+					var reszta_Z_Dzielenia = n1%n2
+					var wynikDzielenia = parseInt(n1/n2)
+                    document.getElementById('result').value = `${wynikDzielenia} reszta ${reszta_Z_Dzielenia}`;
+                }
+            }
+            
+        </script>
+        
+    </head>
+    <body>
+        
+        <input type="text" id="n1"/><br/><br/>
+        <input type="text" id="n2"/><br/><br/>
+        
+        <select id="operators">
+            <option value="+">Dodawanie</option>
+            <option value="-">Odejmowanie</option>
+            <option value="/">Dzielenie</option>
+            <option value="X">Mnożenie</option>
+			<option value="%">Dzielenie z resztą</option>
+        </select>
+        
+        <button onclick="calc();">=</button>
+        <input type="text" id="result" readonly/>
+        
+    </body>
+</html>
