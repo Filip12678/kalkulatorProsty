@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Kalkulator prosty</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script>
+            
+            function calc()
+            {
+                var n1 = parseFloat(document.getElementById('n1').value);
+                var n2 = parseFloat(document.getElementById('n2').value);
+                
+                var oper = document.getElementById('operators').value;
+                
+                if(oper === '+')
+                {
+                    var wynik = n1+n2;
+					wynik = Math.round(wynik * 100000000000000) / 100000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+                
+                if(oper === '-')
+                {
+                    var wynik = n1-n2;
+					wynik = Math.round(wynik * 100000000000000) / 100000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+                
+                if(oper === '/')
+                {
+				    var wynik = n1/n2;
+					wynik = Math.round(wynik * 100000000000000) / 100000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+                
+                if(oper === 'X')
+                {
+					var wynik = n1*n2;
+					wynik = Math.round(wynik * 100000000000000) / 100000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+				if(oper === '%')
+                {
+					var reszta_Z_Dzielenia = n1%n2
+					var wynikDzielenia = parseInt(n1/n2)
+                    document.getElementById('result').value = `${wynikDzielenia} reszta ${reszta_Z_Dzielenia}`;
+                }
+				if(oper === '^')
+                {
+					var wynik = wynik = Math.pow(n1, n2);
+					wynik = Math.round(wynik * 100000000000000) / 100000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+				if(oper === 'pierwiastkowanie')
+                {
+					var wynik = wynik = Math.pow(n1, 1/n2);
+					wynik = Math.round(wynik * 100000000000000) / 100000000000000;
+                    document.getElementById('result').value = wynik;
+                }
+            }
+			
+			function kopiuj() {
+			navigator.clipboard.writeText(result.value);
+			}
+            
+        </script>
+        
+    </head>
+    <body>
+        
+        <input type="text" id="n1"/><br/><br/>
+        <input type="text" id="n2"/><br/><br/>
+        
+        <select id="operators">
+            <option value="+">Dodawanie</option>
+            <option value="-">Odejmowanie</option>
+            <option value="/">Dzielenie</option>
+            <option value="X">Mnożenie</option>
+			<option value="%">Dzielenie z resztą</option>
+			<option value="^">Potęgowanie</option>
+			<option value="pierwiastkowanie">Pierwiastkowanie</option>
+        </select>
+        
+        <button onclick="calc();">=</button>
+        <input type="text" id="result" readonly/>  <button onclick="kopiuj();">Kopiuj wynik</button>
+        
+    </body>
+</html>
